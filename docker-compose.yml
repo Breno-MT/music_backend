@@ -10,5 +10,21 @@ services:
       - .:/app
       - /app/node_modules
     env_file:
-    - .env
-music_backend
+      - .env
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: music_postgres
+    environment:
+      POSTGRES_USER: music_user
+      POSTGRES_PASSWORD: music_password
+      POSTGRES_DB: music_db
+    volumes:
+      - music_pgdb:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  music_pgdb:
