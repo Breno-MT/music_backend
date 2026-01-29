@@ -39,7 +39,6 @@ Dockerfile.*
 pgdata/
 postgres-data/
 db-data/
-*.sql
 *.dump
 *.bak
 
